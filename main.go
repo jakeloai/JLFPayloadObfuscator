@@ -490,8 +490,8 @@ func main() {
 
 	if *payloadFlag == "" && *fileFlag == "" {
 		fmt.Fprintln(os.Stderr, "[ERROR] Please provide either -p (single payload) or -f (file path)")
-		fmt.Fprintln(os.Stderr, "Usage: payloadobfuscator -p \"<payload>\" -m <mode> -o <output>")
-		fmt.Fprintln(os.Stderr, "       payloadobfuscator -f <file> -m <mode> -o <output>")
+		fmt.Fprintln(os.Stderr, "Usage: jlfpayload -p \"<payload>\" -m <mode> -o <output>")
+		fmt.Fprintln(os.Stderr, "       jlfpayload -f <file> -m <mode> -o <output>")
 		os.Exit(1)
 	}
 
