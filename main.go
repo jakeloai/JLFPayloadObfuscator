@@ -120,7 +120,7 @@ func encodeHexSlashX(s string) string {
 	data := []byte(s)
 	result := make([]string, len(data))
 	for i, b := range data {
-		result[i] = fmt.Sprintf("\x02x", b)
+		result[i] = fmt.Sprintf(`\x%02x`, b)
 	}
 	return strings.Join(result, "")
 }
@@ -154,9 +154,9 @@ func encodeUnicodeEscape(s string) string {
 	result := make([]string, 0)
 	for _, c := range s {
 		if c <= 0xFF {
-			result = append(result, fmt.Sprintf("\u0002x", c))
+			result = append(result, fmt.Sprintf(`\u00%02x`, c))
 		} else if c <= 0xFFFF {
-			result = append(result, fmt.Sprintf("\u04x", c))
+			result = append(result, fmt.Sprintf(`\u%04x`, c))
 		} else {
 			result = append(result, string(c))
 		}
